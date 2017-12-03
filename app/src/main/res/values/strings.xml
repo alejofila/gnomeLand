@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GnomeLand</string>
+    <string name="header_id_label">ID</string>
+    <string name="header_name_label">Name</string>
+    <string name="header_age_label">Age</string>
+    <string name="query_hint">Search by gnome name</string>
+    <string name="header_hair_color_label">Hair Color</string>
+    <string name="no_internet_connection">Initial internet connection is required</string>
+    <string name="gnome_image_content_description">Gnome image</string>
+    <string name="gnome_details_activity_title">Gnome Details</string>
+    <string name="gnome_details_no_friends"> %1$s has no friends </string>
+    <string name="gnome_details_no_professions"> %1$s is lazy, has no profession </string>
+</resources>
