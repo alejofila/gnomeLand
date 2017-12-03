@@ -3,7 +3,7 @@
 An  demo app showcasing MVP and some common libraries in the android development world : 
 
 RxJava, 
-Retrofi,
+Retrofit,
 Dagger,
 ConstraintLayout,
 Gson
