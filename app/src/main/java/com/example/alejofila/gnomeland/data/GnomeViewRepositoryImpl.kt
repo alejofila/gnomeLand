@@ -9,8 +9,13 @@ import io.reactivex.Single
  * but could be easily changed to a localStore
  */
 class GnomeViewRepositoryImpl(val remoteStore: RemoteGnomeStore) : GnomeViewRepository {
+
+    var response: Single<List<GnomeUIModel>>? = null
     override fun getAllGnomes(): Single<List<GnomeUIModel>> {
-        return remoteStore.getAllGnomes().cache()
+        if (response == null) {
+            response = remoteStore.getAllGnomes().cache()
+        }
+        return response!!
     }
 
 }
