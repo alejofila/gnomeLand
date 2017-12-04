@@ -48,6 +48,8 @@ class GnomeDetailsActivity : AppCompatActivity(), GnomeDetailsContract.View {
     override fun showGnomeImage(url: String) {
         picasso.load(url)
                 .fit()
+                .placeholder(R.drawable.ic_help_outline)
+                .error(R.drawable.ic_help_outline)
                 .into(detailsGnomeImage)
     }
 
