@@ -10,7 +10,6 @@ import io.reactivex.disposables.CompositeDisposable
 class GnomeListPresenter(val view: GnomeListContract.View,
                          private val repository: GnomeViewRepository,
                          override val schedulerProvider: SchedulerProvider) : GnomeListContract.Presenter {
-    var alreadyShowed = false
 
     val disposableBag: CompositeDisposable = CompositeDisposable()
     override fun showListOfGnomes() {
@@ -20,7 +19,6 @@ class GnomeListPresenter(val view: GnomeListContract.View,
                 .subscribe({ list ->
                     if (list.isNotEmpty()) {
                         view.showGnomes(list)
-                        alreadyShowed = true
                     }
                 },
                         { onError: Throwable ->
@@ -37,7 +35,6 @@ class GnomeListPresenter(val view: GnomeListContract.View,
     }
 
     override fun start() {
-        if (!alreadyShowed)
             showListOfGnomes()
     }
 

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.gnome_item.view.*
 /**
  *
  */
-class GnomeRecyclerViewAdapter(var gnomes: List<GnomeUIModel>) : RecyclerView.Adapter<GnomeRecyclerViewAdapter.GnomeViewHolder>(), Filterable {
+class GnomeRecyclerViewAdapter(var gnomes: List<GnomeUIModel> = emptyList()) : RecyclerView.Adapter<GnomeRecyclerViewAdapter.GnomeViewHolder>(), Filterable {
 
     private val clickSubject = PublishSubject.create<GnomeUIModel>()
 

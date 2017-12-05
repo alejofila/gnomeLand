@@ -36,16 +36,14 @@ class GnomeListActivity : AppCompatActivity(), GnomeListContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gnome_list)
         setUpDaggerComponent()
-        gnomeRecyclerView.layoutManager.onRestoreInstanceState(listState);
-
-
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
+        adapter = GnomeRecyclerViewAdapter()
+        gnomeRecyclerView.adapter = adapter
         listState = savedInstanceState?.getParcelable("ListState")
 
+
+
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -68,12 +66,14 @@ class GnomeListActivity : AppCompatActivity(), GnomeListContract.View {
     }
 
     override fun showGnomes(gnomes: List<GnomeUIModel>) {
-        adapter = GnomeRecyclerViewAdapter(gnomes)
-        gnomeRecyclerView.adapter = adapter
-        recyclerClickEventDisposable = adapter.clickEvent
-                .subscribe { gnome ->
-                    presenter.goToGnomeDetails(gnome)
-                }
+        adapter.swapData(gnomes)
+        if (recyclerClickEventDisposable == null) {
+            recyclerClickEventDisposable = adapter.clickEvent
+                    .subscribe { gnome ->
+                        presenter.goToGnomeDetails(gnome)
+                    }
+        }
+        gnomeRecyclerView.layoutManager.onRestoreInstanceState(listState);
     }
 
 
